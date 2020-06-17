@@ -3,11 +3,17 @@ import cdsapi
 c = cdsapi.Client()
 
 c.retrieve(
-    'cams-global-reanalysis-eac4',
+    'cams-solar-radiation-timeseries',
     {
-        'date': '2003-01-01/2003-01-01',
-        'format': 'grib',
-        'variable': 'total_column_ozone',
-        'time': '03:00',
+        'sky_type': 'clear',
+        'location': {
+            'latitude': 0,
+            'longitude': 0,
+        },
+        'altitude': '-999.',
+        'date': '2020-06-09/2020-06-09',
+        'time_step': '1month',
+        'time_reference': 'universal_time',
+        'format': 'csv',
     },
-    'download.grib')
+    'download.csv')

@@ -12,6 +12,35 @@
                 response.end();  
             break;  
 
+            case '/script-test.js':
+                fs.readFile(__dirname + path, function(error, data) {  
+                    if (error) {  
+                        response.writeHead(404);  
+                        response.write(error);  
+                        response.end();  
+                    } else {  
+                        /*
+                        response.writeHead(200, {  
+                            'Content-Type': 'application/javascript'
+                        });  
+                        response.write(data);  
+                        response.end(); 
+                        */
+                       
+                        const { spawn } = require('child_process');
+                            const process = spawn('python', ['./script-test.py']);
+                            process.stdout.on('data', (data) => {
+                            console.log(data.toString());
+                        });
+                         
+
+                        response.end();
+                     
+                    
+                    }  
+                });
+            break;
+                
             case '/index.html':  
                 fs.readFile(__dirname + path, function(error, data) {  
                     if (error) {  
@@ -172,21 +201,7 @@
                 });  
             break;
 
-            case '/script-test.js':
-                fs.readFile(__dirname + path, function(error, data) {  
-                    if (error) {  
-                        response.writeHead(404);  
-                        response.write(error);  
-                        response.end();  
-                    } else {  
-                        response.writeHead(200, {  
-                            'Content-Type': 'application/javascript'
-                        });  
-                        response.write(data);  
-                        response.end();  
-                    }  
-                });  
-            break;
+            
 
             case '/assets/img/copernicus_logo.png':
                 fs.readFile(__dirname + path, function(error, data) {  

@@ -64,8 +64,19 @@
                     <input type="file" id="input">
                     
                     <!-- test script execution button -->
-                    <script src="script-test.js"></script>
+                    
+                    <!-- <script src="script-test.js"></script> -->
+                    <!--
                     <input id="clickMe" type="button" value="clickme" onclick="testExecution();" />
+                    -->
+                    
+                    <form action="/script-test.js" method="post" class="form-example">
+                        <div class="form-example">
+                          <input type="submit" value="click !">
+                        </div>
+                    </form>
+
+
                     <!-- end test script execution button -->
 
                 </div>

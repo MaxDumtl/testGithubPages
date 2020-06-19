@@ -4,13 +4,6 @@
     var server = http.createServer(function(request, response) {  
         var path = url.parse(request.url).pathname;  
         switch (path) {  
-            case '/':  
-                response.writeHead(200, {  
-                    'Content-Type': 'text/plain'  
-                });  
-                response.write("This is Test Message !!!");  
-                response.end();  
-            break;  
 
             case '/script-test.js':
                 fs.readFile(__dirname + path, function(error, data) {  
@@ -40,6 +33,14 @@
                     }  
                 });
             break;
+
+            case '/':  
+                response.writeHead(200, {  
+                    'Content-Type': 'text/plain'  
+                });  
+                response.write("This is Test Message !!!");  
+                response.end();  
+            break;  
                 
             case '/index.html':  
                 fs.readFile(__dirname + path, function(error, data) {  

@@ -76,6 +76,16 @@
                         </div>
                     </form>
 
+                    <button id='send'>SEND</button>
+ 
+                    <script type="text/javascript">
+                        //websocket = new WebSocket("ws://192.168.0.12:8000/");  
+                        websocket = new WebSocket("http://localhost:8082/");
+                        document.getElementById('send').addEventListener('click',function() {
+                            websocket.send('hello');
+                        })
+                    </script>
+
 
                     <!-- end test script execution button -->
 

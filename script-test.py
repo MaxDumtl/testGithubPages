@@ -3,17 +3,12 @@ import cdsapi
 c = cdsapi.Client()
 
 c.retrieve(
-    'cams-solar-radiation-timeseries',
+    'cams-global-reanalysis-eac4-monthly',
     {
-        'sky_type': 'clear',
-        'location': {
-            'latitude': 0,
-            'longitude': 0,
-        },
-        'altitude': '-999.',
-        'date': '2020-06-09/2020-06-09',
-        'time_step': '1month',
-        'time_reference': 'universal_time',
-        'format': 'csv',
+        'format': 'netcdf',
+        'variable': 'black_carbon_aerosol_optical_depth_550nm',
+        'year': '2010',
+        'month': '05',
+        'product_type': 'monthly_mean',
     },
-    'download.csv')
+    'download.nc')

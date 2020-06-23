@@ -202,7 +202,21 @@
                 });  
             break;
 
-            
+            case '/script-ajax.js':
+                fs.readFile(__dirname + path, function(error, data) {  
+                    if (error) {  
+                        response.writeHead(404);  
+                        response.write(error);  
+                        response.end();  
+                    } else {  
+                        response.writeHead(200, {  
+                            'Content-Type': 'application/javascript'
+                        });  
+                        response.write(data);  
+                        response.end();  
+                    }  
+                });  
+            break;            
 
             case '/assets/img/copernicus_logo.png':
                 fs.readFile(__dirname + path, function(error, data) {  
